@@ -5,9 +5,6 @@
             input, textarea {
                 font-family: Roboto, Arial, sans-serif;
             }
-            span {
-                
-            }
         </style>
     </head>
     <body>
@@ -70,13 +67,19 @@
             }
             
             function saveToFile() {
-                
+            	var fileDl = document.createElement("a");
+                fileDl.setAttribute("href","data:text/plain;charset=utf-8," + encodeURIComponent(document.getElementById("total").value));
+                fileDl.setAttribute("download","yt-timecommgen.txt");
+                fileDl.style.display = "none";
+                document.body.appendChild(fileDl);
+                fileDl.click();
+                document.body.removeChild(fileDl);
             }
             
         </script>
 
         <h1>YouTube Timestamp Comment Generator</h1>
-        <p>Timestamp your favourite long videos with ease!</p>
+        <p>Watch and timestamp your favourite videos with ease! (Only works with YouTube at the moment.)</p>
         
         <span>Video URL </span><input id="url" oninput="updateID()"/>
         <button onclick="loadVideo()">Load Video</button>
@@ -95,7 +98,9 @@
             <span>Timestamp Comment</span>
             <button onclick="saveToFile()">Save to Files</button>
             <br/>
-            <textarea id="total" rows="4" cols="110" value=""></textarea>
+            <textarea id="total" rows="8" cols="110" value=""></textarea>
         </div>
+        <br />
+        <a href="index.html">Go Back to the Main Page</a>
     </body>
 </html>
