@@ -63,28 +63,22 @@
             }
             
             function saveToFile() {
-            	var fileDl = document.createElement("a");
-                fileDl.setAttribute("href","data:text/plain;charset=utf-8," + encodeURIComponent(document.getElementById("total").value));
-                fileDl.setAttribute("download","yt-timecommgen.txt");
-                fileDl.style.display = "none";
-                document.body.appendChild(fileDl);
-                fileDl.click();
-                document.body.removeChild(fileDl);
+            	var filename = prompt("File name to save as?","yt-timestamp-comment.txt");
+                if (filename != null) {
+            		var fileDl = document.createElement("a");
+                	fileDl.setAttribute("href","data:text/plain;charset=utf-8," + encodeURIComponent(document.getElementById("total").value));
+                	fileDl.setAttribute("download",filename);
+                	fileDl.style.display = "none";
+                	document.body.appendChild(fileDl);
+               		fileDl.click();
+                	document.body.removeChild(fileDl);
+                }
             }
             
         </script>
 
         <h1>YouTube Timestamp Comment Generator</h1>
-        <p>
-            Watch and timestamp your favourite videos with ease!
-            <br />
-            This page takes care of the timestamping for you! All you need to do is stop the video where you want to write your comment. Then, type your comment into the below text field, and click "Add to Comment".
-            It will add the proper timestamp to the front of the comment for you.
-            
-            Do note that if you're using this for the YouTube chapters feature, you will need a timestamp at the start of the video (0h, 0m, 0s) for it to work.
-            
-            Thank you for using this page!
-        </p>
+        <p>Timestamp your favourite long videos with ease!</p>
         
         <span>Video URL </span><input id="url" oninput="updateID()"/>
         <button onclick="loadVideo()">Load Video</button>
@@ -105,7 +99,5 @@
             <br/>
             <textarea id="total" rows="8" cols="110" value=""></textarea>
         </div>
-        <br />
-        <a href="index.html">Go Back to the Main Page</a>
     </body>
 </html>
