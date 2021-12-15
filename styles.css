@@ -3,4 +3,6 @@ h1 {
 }
 table {
   border: 0px solid black;
+  width: 75%;
+  height: 75%;
 }
