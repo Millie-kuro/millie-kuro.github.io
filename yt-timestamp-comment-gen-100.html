@@ -56,6 +56,14 @@
             
             function getTime() {
                 var totalSec = Math.floor(player.getCurrentTime());
+                if (document.getElementById("live-mode").checked == true) {
+                	totalSec -= document.getElementById("offset").value;
+                    if (totalSec < 0) {
+                    	totalSec = 0;
+                    }
+                }
+                
+                //convert to hms
                 var hr = Math.floor(totalSec / 3600);
                 var min = Math.floor((totalSec % 3600) / 60);
                 var sec = Math.floor(totalSec % 60);
@@ -120,9 +128,9 @@
             
             function toggleLivestream() {
                 if (document.getElementById("live-mode").checked) {
-                    //show livestream mode
+                    document.getElementById("live-mode-offset").hidden = false;
                 } else {
-                    //hide livestream mode
+                	document.getElementById("live-mode-offset").hidden = true;
                 }
             }
             
@@ -148,8 +156,9 @@
         <div>
             <span id="time">Comment at Time</span>
             <button onclick="addToComment()">Add Comment</button>
-            <div id="live-mode-offset">
+            <div id="live-mode-offset" hidden="true">
                 <!-- Livestream mode timestamp offset-->
+                <span>Timestamp Offset: </span><input type="number" id="offset" value="2" style="text-align:right;"/><span>seconds</span>
             </div>
             <br/>
             <textarea id="comment" cols="110"></textarea>
