@@ -89,7 +89,7 @@
             
             function saveAllCookies() {
                 saveCookie("vidId",id);
-                saveCookie("comment", document.getElementById("total").value);
+                saveCookie("comment", encodeURIComponent(document.getElementById("total").value));
 //              document.cookie = "";
                 alert(document.cookie);
             }
@@ -108,7 +108,7 @@
             function loadCookie() {
                 id = getCookieValue("id");
                 document.getElementById("url").value = id;
-                document.getElementById("total").value = getCookieValue("comment");
+                document.getElementById("total").value = decodeURIComponent(getCookieValue("comment"));
                 if (id != null) {
                     loadVideo();
                 }
