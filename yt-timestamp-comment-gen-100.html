@@ -118,6 +118,14 @@
                 }
             }
             
+            function toggleLivestream() {
+                if (document.getElementById("live-mode").checked) {
+                    //show livestream mode
+                } else {
+                    //hide livestream mode
+                }
+            }
+            
         </script>
 
         <h1>YouTube Timestamp Comment Generator</h1>
@@ -130,13 +138,19 @@
         <span>Video URL </span><input id="url" oninput="updateID()"/>
         <button onclick="loadVideo()">Load Video</button>
         <br/>
+        <input id="live-mode" type="checkbox" onclick="toggleLivestream()"/><span>Livestream mode</span>
+        <br/>
+        <br/>
         
         <div><span id="id"/></div>
         <div id="playerDiv"></div>
         
         <div>
             <span id="time">Comment at Time</span>
-            <button onclick="addToComment()">Add Timestamped Comment</button>
+            <button onclick="addToComment()">Add Comment</button>
+            <div id="live-mode-offset">
+                <!-- Livestream mode timestamp offset-->
+            </div>
             <br/>
             <textarea id="comment" cols="110"></textarea>
         </div>
