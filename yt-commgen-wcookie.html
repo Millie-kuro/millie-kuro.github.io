@@ -42,12 +42,13 @@
             }
             
             function onPlayerStateChange(ev) {
-//                if (ev.data = YT.PlayerState.PLAYING) {
+                while (ev.data == YT.PlayerState.PLAYING) {
 //                    playingStatus = true;
 //                } else {
 //                    playingStatus = false;
 //                }
-                updateTimestamp();
+                    updateTimestamp();
+                }
             }
             
             function getTime() {
