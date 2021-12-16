@@ -84,7 +84,9 @@
             }
             
             function genCookie(name, content) {
-            	return name + "=" + content + ";path=/;";
+                let d = new Date();
+                d.setTime(d.getTime() + 3600000*24 * 30);
+            	return name + "=" + content + ";expires="+d.toUTCString()+"path=/;";
             }
             
         </script>
