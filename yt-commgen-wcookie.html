@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="styles.css" />
     </head>
-    <body>
+    <body onload="loadCookie()">
         <script>
             // Video ID
             var id = "";
@@ -96,9 +96,20 @@
             }
             
             function saveCookie(name, content) {
-                let d = new Date();
+                var d = new Date();
                 d.setTime(d.getTime() + 3600000*24 * 30); //30d before expiration
             	document.cookie = name + "=" + content + ";expires="+d.toUTCString()+";path=/";
+            }
+            
+            function getCookieValue(name) {
+                let result = document.cookie.match("(^|[^;]+)\\s*" + name + "\\s*=\\s*([^;]+)")
+                return result ? result.pop() : ""
+            }
+            
+            function loadCookie() {
+                id = getCookieValue("id");
+                document.getElementById("url").value = id;
+                document.getElementById("total").value = getCookieValue("comment");
             }
             
         </script>
