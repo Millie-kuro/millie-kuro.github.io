@@ -16,6 +16,7 @@
             firstSc.parentNode.insertBefore(tag, firstSc);
 
             var player;
+            var playingStatus = false;
             
             function updateID() {
                 var url = document.getElementById("url").value;
@@ -33,10 +34,20 @@
                            width: 720,
                            height: 480,
                            videoId: id,
+                           events: {"onStateChange", onPlayerStateChange}
                        });
                 } else {
                     player.loadVideoById({videoId: id});
                 }
+            }
+            
+            function onPlayerStateChange(ev) {
+                if (ev.data = YT.PlayerState.PLAYING) {
+                    playingStatus = true;
+                } else {
+                    playingStatus = false;
+                }
+                updateTimestamp();
             }
             
             function getTime() {
@@ -105,7 +116,7 @@
             <span id="time">Comment at Time</span>
             <button onclick="addToComment()">Add Timestamped Comment</button>
             <br/>
-            <textarea id="comment" cols="110" oninput="updateTimestamp()"></textarea>
+            <textarea id="comment" cols="110"></textarea>
         </div>
         <div>
             <span>Timestamp Comment</span>
