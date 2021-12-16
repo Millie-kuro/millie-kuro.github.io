@@ -72,7 +72,7 @@
                 document.getElementById("total").value += time + " " + comm + "\n";
                 document.getElementById("comment").value = "";
                 
-                saveCookie();
+                saveAllCookies();
             }
             
             function saveToFile() {
@@ -88,17 +88,17 @@
                 }
             }
             
-            function saveCookie() {
-              	document.cookie = genCookie("vidId",id);
-                document.cookie += genCookie("comment", document.getElementById("total").value);
+            function saveAllCookies() {
+                saveCookie("vidId",id);
+                saveCookie("comment", document.getElementById("total").value);
 //              document.cookie = "";
                 alert(document.cookie);
             }
             
-            function genCookie(name, content) {
+            function saveCookie(name, content) {
                 let d = new Date();
                 d.setTime(d.getTime() + 3600000*24 * 30); //30d before expiration
-            	return name + "=" + content + ";expires="+d.toUTCString()+";path=/";
+            	document.cookie = name + "=" + content + ";expires="+d.toUTCString()+";path=/";
             }
             
         </script>
