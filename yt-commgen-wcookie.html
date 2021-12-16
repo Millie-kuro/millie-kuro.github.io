@@ -106,7 +106,7 @@
             }
             
             function loadCookie() {
-                document.getElementById("url").value = "https://www.youtube.com/watch?v="+id;
+                document.getElementById("url").value = "https://www.youtube.com/watch?v="+getCookieValue("vidId");
                 document.getElementById("total").value = decodeURIComponent(getCookieValue("comment"));
                 if (id != null) {
                     loadVideo();
