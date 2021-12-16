@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .base {
+                color:#6600FF;
+                font-family: "Comic Sans MS", monospace;
+            }
+            .inputtable {
+                border:0px solid black;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <script>
+            var wp, sp, str, agi, wil = 0;
+            var initMultiBonus = 0;
+            var initSAWMulti = 1;
+            var result = 0;
+            
+            function updateVars() {
+                wp=parseInt(document.getElementById("wp").value);
+                sp=parseInt(document.getElementById("sp").value);
+                str=parseInt(document.getElementById("str").value);
+                agi=parseInt(document.getElementById("agi").value);
+                wil=parseInt(document.getElementById("wil").value);
+            }
+            
+            function getInnerMulti(saw) {
+                result = 1 + initMultiBonus + 0.002 * initSawMulti * saw;
+            }
+            
+            function calculate() {
+                updateVars();
+                getInnerMulti(30);
+                document.getElementById("result").innerHTML=result;
+            }
+            
+            function test() {
+                document.getElementById("demo").style.color="#FF0000";
+            }
+            
+            function loadShape() {
+                document.getElementById("power").src="http://pirate101central.com/w/images/6/6b/%28Ability%29_Gambit_of_Steel.png";
+            }
+          
+            function switchPower() {
+            }
+          
+        </script>
+        <h1>Test Page</h1>
+        <br/>
+        <table>
+            <tr>
+                <td>Weapon Power</td>
+                <td><input id="wp" type="number" oninput="calculate()" value="0"/></td>
+            </tr>
+            <tr>
+                <td>Spell Power</td>
+                <td><input id="sp" type="number" oninput="calculate()" value="0"/></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td><span>Strength</span></td>
+                <td><input id="str" type="number" oninput="calculate()" value="0"/></td>
+            </tr>
+            <tr>
+                <td><span>Agility</span></td>
+                <td><input id="agi" type="number" oninput="calculate()" value="0"/></td>
+            </tr>
+            <tr>
+                <td><span>Will</span></td>
+                <td><input id="wil" type="number" oninput="calculate()" value="0"/></td>
+            </tr>
+        </table>
+        
+        <button type="button" onclick="switchPower()">Switch Power</button>
+        
+        <br/>
+        <span id="result"></span>
+        
+        <br/><br/>
+        <img id="power" src="http://pirate101central.com/w/images/b/bb/%28Ability%29_Sneak_Attack.png"/>
+        <h1 style="background-color: red;">Hello World!</h1>
+        <p id="demo">This is a paragraph.</p>
+        <button type="button" onclick="test()">test button</button>
+        <button type="button" onclick="loadShape()" class="base">Change Power</button>
+
+    </body>
+</html>
