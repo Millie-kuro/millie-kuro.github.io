@@ -42,14 +42,13 @@
             }
             
             function onPlayerStateChange(ev) {
-//                while (ev.data == YT.PlayerState.PLAYING) {
-//                    playingStatus = true;
-//                } else {
-//                    playingStatus = false;
-//                }
-                updateTimestamp();
-//                }
+                startTimestampUpdate();
             }
+            
+            function startTimestampUpdate() {
+                updateTimestamp();
+            }
+            setInterval(function() {startTimestampUpdate();}, 16);
             
             function getTime() {
                 var totalSec = Math.floor(player.getCurrentTime());
