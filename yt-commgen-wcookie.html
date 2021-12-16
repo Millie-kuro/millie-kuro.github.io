@@ -109,6 +109,9 @@
                 id = getCookieValue("id");
                 document.getElementById("url").value = id;
                 document.getElementById("total").value = getCookieValue("comment");
+                if (id != null) {
+                    loadVideo();
+                }
             }
             
         </script>
@@ -127,7 +130,7 @@
             <span id="time">Comment at Time</span>
             <button onclick="addToComment()">Add Timestamped Comment</button>
             <br/>
-            <textarea id="comment" cols="110" oninput="updateTimestamp()"></textarea>
+            <textarea id="comment" cols="110"></textarea>
         </div>
         <div>
             <span>Timestamp Comment</span>
