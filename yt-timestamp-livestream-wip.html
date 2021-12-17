@@ -86,12 +86,20 @@
 		    document.getElementById("liveChatWin").parentNode.removeChild(document.getElementById("liveChatWin"));
 		}
 		var newChat = document.createElement("iframe");
+		newChat.width = 720;
+		newChat.height = 200;
 		newChat.id = "liveChatWin";
 		newChat.src = "https://www.youtube.com/live_chat?v=" + id + "&embed_domain=" + window.location.hostname;
 		document.getElementById("liveChat").appendChild(newChat);
 //		let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=" + window.location.hostname;
 //                document.getElementById("liveChatWindow").src = embedUrl;
             }
+		
+	    function showChat() {
+		if (document.getElementById("liveChatWin") != null) {
+		    document.getElementById("liveChatWin").hidden = !document.getElementById("chat-visible").checked;
+		}
+	    }
             
             function addToComment() {
                 var comm = document.getElementById("comment").value;
@@ -172,8 +180,8 @@
         <div><span id="id"/></div>
         <div id="playerDiv"></div>
         <div id="liveChat" hidden="true">
-	        <iframe id="liveChatWindow" src="" width="720" height="300"></iframe>
-        </div>
+		<input id="chat-visible" type="checkbox" onclick="showChat()">Show Chat</button>
+	</div>
         
         <div>
             <span id="time">Comment at Time</span>
