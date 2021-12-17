@@ -82,7 +82,7 @@
             }
             
             function embedLiveChat() {
-            	let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=www.millie-kuro-github.io";
+            	let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=" + window.location.hostname;
                 document.getElementById("liveChatWindow").src = embedUrl;
             }
             
