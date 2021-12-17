@@ -166,7 +166,7 @@
             <br />
             (Also works with livestreams.)
 	    <br />
-	    (trying to get live chat to work...help++)
+	    (trying to get live chat to work...help++ testing)
         </p>
         
         <span>Video URL </span><input id="url" oninput="updateID()"/>
@@ -177,11 +177,19 @@
         <br/>
         
         <div><span id="id"/></div>
-        <div id="playerDiv"></div>
-        <div id="liveChat" hidden="true">
-	    <input id="chat-visible" type="checkbox" onclick="showChat()">Show Chat</button>
-	    <br />
-	</div>
+	<table>
+	    <tr>
+		<td>
+        	    <div id="playerDiv"></div>
+		</td>
+		<td>
+        	    <div id="liveChat" hidden="true">
+	    	    	<input id="chat-visible" type="checkbox" onclick="showChat()">Show Chat</button>
+	    	    	<br />
+		    </div>
+		</td>
+	    </tr>
+	</table>
         
         <div>
             <span id="time">Comment at Time</span>
