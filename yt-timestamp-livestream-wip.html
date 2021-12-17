@@ -86,10 +86,10 @@
 		    document.getElementById("liveChatWin").parentNode.removeChild(document.getElementById("liveChatWin"));
 		}
 		var newChat = document.createElement("iframe");
-		newChat.width = 240;
+		newChat.width = 360;
 		newChat.height = 480;
 		newChat.id = "liveChatWin";
-		newChat.src = "https://www.youtube.com/live_chat?v=" + id + "&embed_domain=" + window.location.hostname;
+		newChat.src = "https://www.youtube.com/live_chat?v=" + id + "&embed_domain=" + window.location.hostname + "&width=360&height=480";
 		document.getElementById("liveChat").appendChild(newChat);
 		showChat();
             }
