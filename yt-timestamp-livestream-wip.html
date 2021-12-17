@@ -82,8 +82,15 @@
             }
             
             function embedLiveChat() {
-            	let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=" + window.location.hostname;
-                document.getElementById("liveChatWindow").src = embedUrl;
+		if (document.getElementById("liveChatWin") != null) {
+		    document.getElementById("liveChatWin").parentNode.removeChild(document.getElementById("liveChatWin"));
+		}
+		var newChat = document.createElement("iframe");
+		newChat.id = "liveChatWin";
+		newChat.src = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=" + window.location.hostname;
+		document.getElementById("liveChat").appendChild(newChat);
+//		let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=" + window.location.hostname;
+//                document.getElementById("liveChatWindow").src = embedUrl;
             }
             
             function addToComment() {
