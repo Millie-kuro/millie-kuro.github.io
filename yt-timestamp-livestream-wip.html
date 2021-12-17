@@ -79,7 +79,7 @@
             }
             
             function embedLiveChat() {
-            	let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=https://millie-kuro.github.io/yt-timestamp-livestream-wip.html";
+            	let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=" + window.domain.hostname;
                 document.getElementById("liveChatWindow").src = embedUrl;
             }
             
