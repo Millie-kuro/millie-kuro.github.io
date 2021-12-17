@@ -149,13 +149,10 @@
             }
             
             function toggleLivestream() {
-                if (document.getElementById("live-mode").checked) {
-                    document.getElementById("live-mode-offset").hidden = false;
-                    document.getElementById("liveChat").hidden = false;
-                } else {
-                	document.getElementById("live-mode-offset").hidden = true;
-                    document.getElementById("liveChat").hidden = true;
-                }
+		let hide = !document.getElementById("live-mode").checked;
+                document.getElementById("live-mode-offset").hidden = hide;
+                document.getElementById("liveChat").hidden = hide;
+		document.getElementById("chat-visible").hidden = hide;
             }
             
         </script>
@@ -172,21 +169,24 @@
         <span>Video URL </span><input id="url" oninput="updateID()"/>
         <button onclick="loadVideo()">Load Video</button>
         <br/>
-        <input id="live-mode" type="checkbox" onclick="toggleLivestream()"/><span>Livestream mode</span>
-        <br/>
         <br/>
         
         <div><span id="id"/></div>
 	<table>
 	    <tr>
 		<td>
+		    <input id="live-mode" type="checkbox" onclick="toggleLivestream()"/><span>Livestream mode</span>
+		</td>
+		<td>
+	    	    <input id="chat-visible" type="checkbox" onclick="showChat()">Show Chat</button>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
         	    <div id="playerDiv"></div>
 		</td>
 		<td>
-        	    <div id="liveChat" hidden="true">
-	    	    	<input id="chat-visible" type="checkbox" onclick="showChat()">Show Chat</button>
-	    	    	<br />
-		    </div>
+        	    <div id="liveChat" hidden="true"></div>
 		</td>
 	    </tr>
 	</table>
