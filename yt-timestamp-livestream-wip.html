@@ -43,6 +43,9 @@
                 } else {
                     player.loadVideoById({videoId: id});
                 }
+		    
+		// Additional code for livestream chat.
+		embedLiveChat();
             }
             
             function onPlayerStateChange(ev) {
