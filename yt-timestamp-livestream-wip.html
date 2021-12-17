@@ -152,7 +152,7 @@
 		let hide = !document.getElementById("live-mode").checked;
                 document.getElementById("live-mode-offset").hidden = hide;
                 document.getElementById("liveChat").hidden = hide;
-		document.getElementById("chat-visible").hidden = hide;
+		document.getElementById("chatToggleDiv").hidden = hide;
             }
             
         </script>
@@ -178,7 +178,9 @@
 		    <input id="live-mode" type="checkbox" onclick="toggleLivestream()"/><span>Livestream mode</span>
 		</td>
 		<td>
-	    	    <input id="chat-visible" type="checkbox" onclick="showChat()">Show Chat</button>
+		    <div id="chatToggleDiv">
+	    	    	<input id="chat-visible" type="checkbox" onclick="showChat()">Show Chat</button>
+		    </div>
 		</td>
 	    </tr>
 	    <tr>
