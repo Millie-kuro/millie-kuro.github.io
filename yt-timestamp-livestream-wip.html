@@ -87,12 +87,11 @@
 		}
 		var newChat = document.createElement("iframe");
 		newChat.width = 720;
-		newChat.height = 200;
+		newChat.height = 250;
 		newChat.id = "liveChatWin";
 		newChat.src = "https://www.youtube.com/live_chat?v=" + id + "&embed_domain=" + window.location.hostname;
 		document.getElementById("liveChat").appendChild(newChat);
-//		let embedUrl = "https://www.youtube.com/live_chat?v="&id&"&embed_domain=" + window.location.hostname;
-//                document.getElementById("liveChatWindow").src = embedUrl;
+		showChat();
             }
 		
 	    function showChat() {
