@@ -1,0 +1,112 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<style>
+			
+			body {
+				background-color: rgba(0, 64, 0, 255);
+			}
+			.snowy {
+				height: 50px;
+				width: 50px;
+				position: fixed;
+				top: 0%;
+				left: 0%;
+				background-position: 50% 50%;
+				background-size: contain;
+				background-image: url("snowflake1.png");
+				background-repeat: no-repeat;
+				transform: rotate(0deg);
+			}
+		</style>
+	</head>
+	<body onload="summonSnow()">
+		<script>
+			var counter = 0;
+			var genDir = {
+				xChange: 2,
+				yChange: 1
+			};
+			var templateSnow = {
+				x: 0,
+				y: 0,
+				vx: 0,
+				xy: 0,
+				inang: 0,
+				ang: 0,
+				size: 100,
+				id: "snow"
+			};
+			var bounds = {
+				t: 0, l: 0,
+				r: window.innerWidth,
+				b: window.innerHeight
+			};
+
+			var spdMulti = 0.15;
+
+			function getRandomInt(num) {
+				return Math.floor(Math.random() * Math.floor(num));
+			}
+
+			var snowArray = [];
+			function summonSnow() {
+				if (snowArray.length > 500) { return; }
+				var newSnow = Object.assign({}, templateSnow);
+				switch(getRandomInt(2)) {
+					case 1:
+						newSnow.x = getRandomInt(bounds.r + 50) - 50;
+						newSnow.y = -50;
+						break;
+					default:
+						newSnow.x = -50;
+						newSnow.y = getRandomInt(bounds.b) - 50;
+				}
+				newSnow.vx = getRandomInt(9);
+				newSnow.vy = getRandomInt(3);
+				newSnow.inang = getRandomInt(360);
+				newSnow.ang = getRandomInt(6) - 3;
+				newSnow.size = Math.random() * .7 + .3;
+				newSnow.id = "snow" + counter++;
+				snowArray.push(newSnow);
+				var newDivSnow = document.createElement("div");
+				newDivSnow.id = newSnow.id;
+				newDivSnow.className = "snowy";
+				document.getElementById("snowroom").appendChild(newDivSnow);
+				newDivSnow.style.left = newSnow.x;
+				newDivSnow.style.top = newSnow.y;
+				newDivSnow.style.transform = "rotate(" + newSnow.ang + "deg) scale(" + newSnow.size + ")";
+			}
+			setInterval(function() {summonSnow();}, 40);
+
+			function animate() {
+				if (snowArray.length == 0) { return; }
+				for (i = 0; i < snowArray.length; i++) {
+					animateSnowflake(i);
+				}
+			}
+			setInterval(function() {animate();}, 1);
+
+			function animateSnowflake(id) {
+				var nextSnow = snowArray[id];
+				nextSnow.x += (genDir.xChange + nextSnow.vx) * spdMulti;
+				nextSnow.y += (genDir.yChange + nextSnow.vy) * spdMulti;
+				nextSnow.inang += nextSnow.ang * spdMulti;
+				nextSnow.inang %= 360;
+				var eleSnow = document.getElementById(nextSnow.id);
+				if ((nextSnow.x > 0 > bounds.r + 50) ||
+						(nextSnow.y > bounds.b + 50)) {
+					document.getElementById("snowroom").removeChild(eleSnow);
+					snowArray.splice(snowArray.indexOf(nextSnow), 1);
+				} else {
+					eleSnow.style.left = Math.floor(nextSnow.x) + "px";
+					eleSnow.style.top = Math.floor(nextSnow.y) + "px";
+					eleSnow.style.transform = "rotate(" + Math.floor(nextSnow.inang) + "deg) scale(" + nextSnow.size + ")";
+				}
+			}
+			
+
+		</script>
+		<dir class="snowfall" id="snowroom"></dir>
+	</body>
+</html>
