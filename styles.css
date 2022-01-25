@@ -1,8 +1,13 @@
 body {
-  background-color: #4469AF;
+  background-image: url('https://github.com/Millie-kuro/millie-kuro.github.io/blob/main/B7A87739-B12D-471C-86C2-4DC2802F5165.png?raw=true');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+	text-align: center;
   color: white;
   font-family: Roboto, Arial, sans-serif;
-]
+}
 h1 {
   text-align: center;
 }
@@ -12,6 +17,10 @@ table {
   height: 75%;
   margin-left: auto;
   margin-right: auto;
+}
+textarea {
+  color: black;
+  background: RGBA(255,255,255,0.7);
 }
 iframe {
   border: 0px solid black;
