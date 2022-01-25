@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+    	iframe {
+        	text-align: center;
+          margin-left: 5%;
+          margin-right: 5%;
+          width: 90%;
+          height: 500px;
+      }
+  </style>
+	<title>TRS Resources</title>
+</head>
+
+<body>
+	<script>
+      //unused atm
+    	function tog(nm, h) {
+        	document.getElementById(nm).hidden = h;
+      }
+    	function toggle(name) {
+        	document.getElementById(name).hidden = !document.getElementById(name).hidden;
+      }
+
+      function toggleTimestamp() { toggle("timestamp"); }
+  </script>
+
+	<h1>Touhou Replay Showcase References</h1>
+	<p>This site is for access to various TRS materials that aren't easily accessible. (e.g. through Discord)</p>
+
+	<span>Touhou Replay Showcase timestamps</span>
+  <button onclick="toggleTimestamp()">Show/Hide</button>
+  <br />
+  <div id="timestamp">
+      <iframe src="https://docs.google.com/spreadsheets/d/1gdEDfGf4gKFhqE_YIdslhRtuKvsHeSr8e16eQiM4yN0/"></iframe>
+  </div>
+
+</body>
+</html>
