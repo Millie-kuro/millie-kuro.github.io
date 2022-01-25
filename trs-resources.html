@@ -2,39 +2,66 @@
 <html>
 <head>
 	<style>
-    	iframe {
+    	body {
+        	background-image: url('https://github.com/Millie-kuro/millie-kuro.github.io/blob/main/B7A87739-B12D-471C-86C2-4DC2802F5165.png?raw=true');
+        }
+        body, a {
+            color: #FFFFFF;
+        }
+    	iframe, table {
         	text-align: center;
-          margin-left: 5%;
-          margin-right: 5%;
-          width: 90%;
-          height: 500px;
-      }
-  </style>
-	<title>TRS Resources</title>
+            margin-left: 5%;
+            margin-right: 5%;
+            width: 90%;
+        }
+        iframe {
+        	height: 500px;
+        }
+        table {
+        	height: 30px;
+        }
+    </style>
+	<title>Page Title</title>
 </head>
 
 <body>
 	<script>
-      //unused atm
-    	function tog(nm, h) {
-        	document.getElementById(nm).hidden = h;
-      }
     	function toggle(name) {
         	document.getElementById(name).hidden = !document.getElementById(name).hidden;
-      }
-
-      function toggleTimestamp() { toggle("timestamp"); }
-  </script>
+        }
+        
+        function toggleTimestamp() { toggle("timestamp"); }
+    </script>
 
 	<h1>Touhou Replay Showcase References</h1>
-	<p>This site is for access to various TRS materials that aren't easily accessible. (e.g. through Discord)</p>
+	<p>This site is for access to various TRS materials for easy access.</p>
 
 	<span>Touhou Replay Showcase timestamps</span>
-  <button onclick="toggleTimestamp()">Show/Hide</button>
-  <br />
-  <div id="timestamp">
-      <iframe src="https://docs.google.com/spreadsheets/d/1gdEDfGf4gKFhqE_YIdslhRtuKvsHeSr8e16eQiM4yN0/"></iframe>
-  </div>
+    <button onclick="toggleTimestamp()">Show/Hide</button>
+    <br />
+    <div id="timestamp">
+    	<iframe src="https://docs.google.com/spreadsheets/d/1gdEDfGf4gKFhqE_YIdslhRtuKvsHeSr8e16eQiM4yN0/"></iframe>
+    </div>
 
+	<br />
+	<span>Extra</span>
+	<table>
+    	<tr>
+        	<td>
+            	<a href="https://docs.google.com/spreadsheets/d/1YJ644DfyjU02ECytPoySlz4FMWwoiJQMZEJxlChz7I0/">Main Touhou Replay Showcase Queue</a>
+            </td>
+            <td>
+            	<a href="https://docs.google.com/spreadsheets/d/19n1Dg-jECBEjPPjr8EZ3R9q3dyfv0Lk--_gnI60U3yg">Shmup Replay Showcase Queue</a>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<a href="https://forms.gle/nvpn2rcbmCvN6WZHA">Main Touhou Replay Showcase Submission Form</a>
+            </td>
+            <td>
+            	<a href="https://forms.gle/6BTdYwsqa8nVTTCd8">Shmup Replay Showcase Submission Form</a>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
