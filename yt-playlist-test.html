@@ -34,18 +34,22 @@
     
       function loadPlaylist() {
         setPlayerId(link);
-        player = new YT.Player('playerdiv', {
-          width: 720,
-          height: 540,
-          playerVars: {
-            'autoplay': 0,
-            'controls': 1,
-            'videoId': '',
-            'listtype': 'playlist',
-            'list': plId
-          },
-          events: {}
-        });
+        if (player == null) {
+          player = new YT.Player('playerdiv', {
+            width: 720,
+            height: 540,
+            playerVars: {
+              'autoplay': 0,
+              'controls': 1,
+              'videoId': '',
+              'listtype': 'playlist',
+              'list': plId
+            },
+            events: {}
+          });
+        } else {
+          player.loadPlaylist({'list': plId});
+        }
       }
     </script>
   
