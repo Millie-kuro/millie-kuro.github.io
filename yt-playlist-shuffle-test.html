@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <title>Page Title</title>
+  </head>
+
+  <body>
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstSc = document.getElementsByTagName('script')[0];
+      firstSc.parentNode.insertBefore(tag, firstSc);
+      var player;
+      var plId = "";
+      var link = "";
+    
+      var positions = [];
+    
+      function getLink() {
+        link = document.getElementById("url").value;
+      }
+    
+      function setPlayerId(url) {
+        if (url.indexOf("list=") == -1) {
+          plId = '';
+        } else {
+          var newStr = url.substring(url.indexOf("list=")+5);
+          if (newStr.indexOf("&") > -1) {
+            newStr = newStr.substring(0, newStr.indexOf("&"));
+          }
+          plId = newStr;
+        }
+      }
+    
+      function loadPlaylist() {
+        setPlayerId(link);
+        if (player == null) {
+          player = new YT.Player('playerdiv', {
+            width: 720,
+            height: 540,
+            playerVars: {
+              'autoplay': 1,
+              'controls': 1,
+              'videoId': '',
+              'listtype': 'playlist',
+              'list': plId
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        } else {
+          player.loadPlaylist({'list': plId});
+          loadPositions();
+        }
+      }
+    
+      function onPlayerReady(event) {}
+      function onPlayerStateChange(event) {
+        if (event.data = YT.PlayerState.PLAYING) {
+          loadPositions(event.target.getPlaylist().length);
+        }
+      }
+    
+      function loadPositions(num) {
+        var ct = num;
+        positions = [];
+        for (var i = 0; i < ct; i++) {
+          positions.push(i);
+        }
+        document.getElementById("text").innerHTML = "List IDs: " + positions.toString();
+      }
+    
+      function getRandom(a, b) {
+        return Math.floor(Math.random() * (a - b + 1) + a);
+      }
+    
+      function nextVideo() {
+        shuffle(positions);
+        player.playVideoAt(positions[0]);
+      }
+    
+      function unpleasant() {
+        nextVideo();
+      }
+      //setInterval(function() {unpleasant();}, 1000);
+    </script>
+  
+    <h1>YouTube Playlist Nonstop Shuffle</h1>
+    <p>
+      This is a playlist thing.
+      <br />
+      Plays videos within the list in a random order.
+      <br />
+      (After a video is played, selects another video at random to play.)
+    </p>
+
+    <br />
+    <button onclick="loadPlaylist()">Load</button>
+    <input id="url" onchange="getLink()"></input>
+    <br />
+    <p id="text"></p>
+    <br />
+    <button onclick="nextVideo()">get another video</button>
+    <br />
+    <br />
+    <div id="playerdiv"></div>
+
+  </body>
+</html>
