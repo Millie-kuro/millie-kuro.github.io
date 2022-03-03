@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Page Title</title>
+  </head>
+  
+  <body>
+    
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstSc = document.getElementsByTagName('script')[0];
+      firstSc.parentNode.insertBefore(tag, firstSc);
+      var player;
+      var plId = "";
+      var link = "";
+    
+      function getLink() {
+        link = document.getElementById("url").value;
+      }
+    
+      function setPlayerId(url) {
+        if (url.indexOf("list=") == -1) {
+          plId = '';
+        } else {
+          var newStr = url.substring(url.indexOf("list=")+5);
+          if (newStr.indexOf("&") > -1) {
+            newStr = newStr.substring(0, newStr.indexOf("&"));
+          }
+          plId = newStr;
+        }
+      }
+    
+      function loadPlaylist() {
+        setPlayerId(link);
+        player = new YT.Player('playerdiv', {
+          width: 720,
+          height: 540,
+          playerVars: {
+            'autoplay': 0,
+            'controls': 1,
+            'videoId': '',
+            'listtype': 'playlist',
+            'list': plId
+          },
+          events: {}
+        });
+      }
+    </script>
+  
+  <h1>YouTube Playlist</h1>
+  <p>This is a playlist thing.</p>
+
+  <br />
+  <button onclick=loadPlaylist()>Load</button>
+  <input id="url" onchange="getLink()"></input>
+  <br />
+  <br />
+  <div id="playerdiv"></div>
+
+</body>
+</html>
