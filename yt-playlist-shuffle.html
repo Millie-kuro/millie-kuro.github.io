@@ -16,8 +16,6 @@
       var plId = "";
       var link = "";
     
-      var positions = [];
-    
       function getLink() {
         link = document.getElementById("url").value;
       }
@@ -58,34 +56,9 @@
     
       function onPlayerStateChange(event) {
         if (event.data = YT.PlayerState.PLAYING) {
-          loadPositions(event.target.getPlaylist().length);
-        }
-        if (event.data = YT.PlayerState.ENDED) {
+          event.target.setShuffle(true);
         }
       }
-    
-      function loadPositions(num) {
-        var ct = num;
-        positions = [];
-        for (var i = 0; i < ct; i++) {
-          positions.push(i);
-        }
-        document.getElementById("text").innerHTML = "List IDs: " + positions.toString();
-      }
-    
-      function getRandom(a, b) {
-        return Math.floor(Math.random() * (b - a + 1) + a);
-      }
-    
-      function nextVideo() {
-        var newList = [];
-        var currPos = player.getPlaylistIndex();
-        for (var i = 0; i < positions.length; i++) {
-          if (positions[i] != currPos) {newList.push(positions[i]);}
-        }
-        player.playVideoAt(newList[getRandom(0, newList.length)]);
-      }
-    
     </script>
   
     <h1>YouTube Playlist Nonstop Shuffle</h1>
@@ -94,20 +67,13 @@
       <br />
       Plays videos within the list in a random order.
       <br />
-      (After a video is played, selects another video at random to play.)
-      <br />
-      (currently broken / not working)
+      (After a video is played, plays another video at random.)
     </p>
 
     <br />
     <button onclick="loadPlaylist()">Load</button>
     <input id="url" onchange="getLink()"></input>
-    <br />
-    <p id="text"></p>
-    <br />
-    <button onclick="nextVideo()">get another video</button>
-    <br />
-    <br />
+    <br /><br />
     <div id="playerdiv"></div>
   
     <br /><br /><br />
