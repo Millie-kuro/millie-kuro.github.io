@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   
-  <body>
+  <body onload="loadCookie()">
     <script>
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
@@ -18,6 +18,8 @@
     
       function getLink() {
         link = document.getElementById("url").value;
+        setPlayerId(link);
+        saveCookie("plId", plId);
       }
     
       function setPlayerId(url) {
@@ -33,7 +35,6 @@
       }
     
       function loadPlaylist() {
-        setPlayerId(link);
         if (player == null) {
           player = new YT.Player('playerdiv', {
             width: 720,
@@ -58,6 +59,25 @@
         if (event.data = YT.PlayerState.PLAYING) {
           event.target.setShuffle(true);
           event.target.setLoop(true);
+        }
+      }
+      
+      function saveCookie(name, content) {
+        var d = new Date();
+        d.setTime(d.getTime() + 3600000*24 * 30); //30d before expiration
+        document.cookie = name + "=" + content + ";expires="+d.toUTCString()+";path=/";
+      }
+      
+      function getCookieValue(name) {
+        let result = document.cookie.match("(^|[^;]+)\\s*" + name + "\\s*=\\s*([^;]+)")
+        return result ? result.pop() : ""
+      }
+      
+      function loadCookie() {
+        document.getElementById("url").value = "https://www.youtube.com/playlist?list="+getCookieValue("plId");
+        getLink();
+        if (plId != null) {
+          loadPlaylist();
         }
       }
     </script>
