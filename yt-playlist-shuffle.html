@@ -57,6 +57,7 @@
       function onPlayerStateChange(event) {
         if (event.data = YT.PlayerState.PLAYING) {
           event.target.setShuffle(true);
+          event.target.setLoop(true);
         }
       }
     </script>
